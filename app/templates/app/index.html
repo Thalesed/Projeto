@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title> Titulo </title>
+		{% load static %}
+		<link rel="stylesheet" href={% static 'css/style.css' %}>
+	</head>
+	<body>
+		<h1> Teste </h1>
+		{% if aut %}
+		<p>Usuario autenticado</p>
+		<div class="msgs">
+		{% for m in msgs %}
+		<p>{{ m.name }}: {{ m.mensagem }} </p>
+		{% endfor %}
+		</div>
+		<form action="/send/" method="POST">
+			{% csrf_token %}
+			<span class="tbox">
+			<input type="text" id="mensagem" name="mensagem" class="tbox space">
+			<input type="submit" value="send" class="tbox">
+			</span>
+		</form>
+		{% else %}
+		<a href="signin/">
+			<input type="button" value="signin">
+		</a>
+		<a href="registro/">
+			<input type="button" value="Registro">
+		</a>
+		{% endif %}
+		<footer>
+			{% if aut %}
+			<a href="/logout/">
+				<input type="button" value="LogOut">
+			</a>
+			{% endif %}
+				Teste&copy; 2023
+				<a href="https://github.com/Thalesed/">
+					github
+				</a>
+				<a href="https://www.linkedin.com/in/thales-eduardo-dias-de-souza-4229b2258">
+					LinkedIn
+				</a>
+		</footer>
+	</body>
+</html>
