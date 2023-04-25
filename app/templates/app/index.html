@@ -1,11 +1,13 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<title> Titulo </title>
+		<meta charset="utf-8">
+		<title>Minha Página</title>
 		{% load static %}
-		<link rel="stylesheet" href={% static 'css/style.css' %}>
+		<link rel="stylesheet" href={% static 'css/sts.css' %}>	
 	</head>
 	<body>
-		<h1> Teste </h1>
+		<h1>Minha Página</h1>
 		{% if aut %}
 		<p>Usuario autenticado</p>
 		<div class="msgs">
@@ -16,31 +18,40 @@
 		<form action="/send/" method="POST">
 			{% csrf_token %}
 			<span class="tbox">
-			<input type="text" id="mensagem" name="mensagem" class="tbox space">
-			<input type="submit" value="send" class="tbox">
+			<input type="text" id="mensagem" name="mensagem" class="space">
+			<input type="submit" value="send" class="btn">
 			</span>
 		</form>
 		{% else %}
-		<a href="signin/">
-			<input type="button" value="signin">
-		</a>
-		<a href="registro/">
-			<input type="button" value="Registro">
+		<div class="box">
+			<h2>
+				Login
+			</h2>
+			<form action="/signin/" method="POST">	
+			{% csrf_token %}
+			{{ form }}
+			<input type="submit" class="btn">
+			</form>
+			<div>
+				<a href="/registro/">
+					Não tenho conta
+				</a>
+			</div>
+		</div>
+		{% endif %}
+	<footer>
+		{% if aut %}
+		<a href="/logout/">
+			<input type="button" value="LogOut" class="priviet">
 		</a>
 		{% endif %}
-		<footer>
-			{% if aut %}
-			<a href="/logout/">
-				<input type="button" value="LogOut">
+			Teste&copy; 2023
+			<a href="https://github.com/Thalesed/">
+				github
 			</a>
-			{% endif %}
-				Teste&copy; 2023
-				<a href="https://github.com/Thalesed/">
-					github
-				</a>
-				<a href="https://www.linkedin.com/in/thales-eduardo-dias-de-souza-4229b2258">
-					LinkedIn
-				</a>
-		</footer>
+			<a href="https://www.linkedin.com/in/thales-eduardo-dias-de-souza-4229b2258">
+				LinkedIn
+			</a>
+	</footer>
 	</body>
 </html>

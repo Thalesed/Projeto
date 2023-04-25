@@ -1,20 +1,20 @@
 <html>
 	<head>
 		{% load static %}
-		<link rel="stylesheet" href={% static 'css/style.css' %}>
+		<link rel="stylesheet" href={% static 'css/sts.css' %}>
 		<title> Titulo </title>
 	</head>
 	<body>
 		<h1> Teste </h1>
-		<div>
+		<div class="box">
 			<form action="/registro/" method="POST">
 				{% csrf_token %}
 				{{ form }}
-				<input type="submit" value="submit" class="but">
+				<input type="submit" value="submit" class="btn">
 			</form>
 
 			<a href="/">
-				<input type="button" value="home" class="but">
+				<input type="button" value="home" class="btn">
 			</a>
 		</div>
 
