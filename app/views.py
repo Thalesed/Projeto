@@ -36,7 +36,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             return redirect('index')    
-    return render(request, 'app/signin.html', {'form':Login()})
+    return index(request)
 
 @login_required
 def logout(request):
